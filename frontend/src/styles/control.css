@@ -1,6 +1,12 @@
 .control {
-  margin: 0 5rem 5rem;
+  margin: 7rem 5rem 5rem;
   display: flex;
+  justify-content: space-evenly;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
 /* CONTROL BTN CSS */
@@ -8,7 +14,7 @@
   border-radius: 50px;
   border: 0;
   color: black;
-  padding: 1rem 5rem;
+  padding: 3rem 5rem;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -18,13 +24,14 @@
     right;
   background-size: 250%;
   transition-duration: 0.5s;
+  margin-bottom: 3rem;
 }
 
 .controlBtnOFF {
   border-radius: 50px;
   border: 0;
   color: black;
-  padding: 1rem 5rem;
+  padding: 3rem 5rem;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1.5rem;
