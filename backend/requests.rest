@@ -1,0 +1,72 @@
+//USERS TEST
+
+GET http://localhost:3001/users
+
+###
+POST http://localhost:3001/users/new
+Content-Type: application/json
+
+{
+	"username": "test",
+    "password": "lol"
+}
+
+###
+
+DELETE http://localhost:3001/users/delete/63cb9b968f29c9b20ca5e7cc
+
+###
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+	"username" : "nat",
+	"password" : "password"
+}
+
+###
+
+GET http://localhost:3001/feed/james
+
+###
+
+PUT http://localhost:3001/users/edit/63cb9b758f29c9b20ca5e7c2
+Content-Type: application/json
+
+{
+	"username": "I AM CHANGED!!!",
+    "password": "ooga booga"
+}
+
+###
+
+//STATS TEST
+
+POST http://localhost:3001/leaderboard/new
+Content-Type: application/json
+
+{
+	"content": "elon musk is not so great",
+    "user": "jams"
+}
+
+###
+
+DELETE http://localhost:3001/feed/delete/63a7a417a98d7d3c45701b47
+
+###
+
+GET http://localhost:3001/leaderboard
+
+###
+
+PUT http://localhost:3001/feed/edit/63a7a43aa98d7d3c45701b49
+Content-Type: application/json
+
+{
+	"content": "I AM CHANGED!!!"
+}
+
+###
+
+PUT http://localhost:3001/feed/update/63a7a43aa98d7d3c45701b49
