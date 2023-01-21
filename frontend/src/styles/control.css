@@ -1,0 +1,51 @@
+.control {
+  margin: 0 5rem 5rem;
+  display: flex;
+}
+
+/* CONTROL BTN CSS */
+.controlBtnON {
+  border-radius: 50px;
+  border: 0;
+  color: black;
+  padding: 1rem 5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--gradBeginON), var(--gradEndON))
+    right;
+  background-size: 250%;
+  transition-duration: 0.5s;
+}
+
+.controlBtnOFF {
+  border-radius: 50px;
+  border: 0;
+  color: black;
+  padding: 1rem 5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--gradBeginOFF), var(--gradEndOFF))
+    right;
+  background-size: 250%;
+  transition-duration: 0.5s;
+}
+
+.controlBtnON:hover {
+  background-position: left;
+  transition-duration: 0.5s;
+  transition: 0.5s;
+  color: white;
+}
+
+.controlBtnOFF:hover {
+  background-position: left;
+  transition-duration: 0.5s;
+  transition: 0.5s;
+  color: white;
+}

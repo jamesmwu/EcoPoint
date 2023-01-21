@@ -7,7 +7,7 @@ function NavBar() {
     <div>
       <div className='navigation'>
         <div className='nav'>
-          <NavLink to='/control' className='link'>
+          <NavLink to='/' className='link'>
             Control
           </NavLink>
 
