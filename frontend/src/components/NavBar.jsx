@@ -8,11 +8,11 @@ function NavBar() {
       <div className='navigation'>
         <div className='nav'>
           <NavLink to='/' className='link'>
-            Control
+            <h4>Control</h4>
           </NavLink>
 
           <NavLink to='/leaderboard' className='link'>
-            Leaderboard
+            <h4>Leaderboard</h4>
           </NavLink>
         </div>
       </div>

@@ -16,6 +16,7 @@ function Control() {
         <div className='container'>
           <h2>Your energy usage:</h2>
           <h3>*insert pie chart here*</h3>
+          {/* Look into react-minimal-pie-chart */}
         </div>
       </div>
     </div>
