@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Montserrat:wght@700&display=swap');
+
+:root {
+  --primary: #5fdd9d;
+  --primaryAccent: #3bd185;
+  --dark: #171a21;
+  --darkAccent: #7e6551;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans';
+}
+
+body {
+  background-color: var(--primaryAccent);
+  color: var(--dark);
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+/* Wrap parent divs for pages with App class */
+.App {
+  margin: 1rem 5rem;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding-bottom: 1rem;
+}
