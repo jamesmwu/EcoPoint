@@ -1,5 +1,5 @@
 .control {
-  margin: 7rem 5rem 5rem;
+  margin-top: 4rem;
   display: flex;
   justify-content: space-evenly;
 }
@@ -9,11 +9,12 @@
   flex-direction: column;
 }
 
-/* CONTROL BTN CSS */
-.controlBtnON {
+/* CONNECT BTN CSS */
+.connectBtn {
+  margin-top: 4rem;
   border-radius: 50px;
   border: 0;
-  color: black;
+  color: white;
   padding: 3rem 5rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -24,13 +25,36 @@
     right;
   background-size: 250%;
   transition-duration: 0.5s;
-  margin-bottom: 3rem;
+}
+
+.connectBtn:hover {
+  background-position: left;
+  transition-duration: 0.5s;
+  transition: 0.5s;
+  color: white;
+}
+
+/* CONTROL BTN CSS */
+.controlBtnON {
+  border-radius: 50px;
+  border: 0;
+  color: white;
+  padding: 3rem 5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--gradBeginON), var(--gradEndON))
+    right;
+  background-size: 250%;
+  transition-duration: 0.5s;
 }
 
 .controlBtnOFF {
   border-radius: 50px;
   border: 0;
-  color: black;
+  color: white;
   padding: 3rem 5rem;
   font-weight: 700;
   text-transform: uppercase;

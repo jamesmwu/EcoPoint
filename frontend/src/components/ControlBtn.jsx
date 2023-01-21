@@ -1,15 +1,19 @@
 import React from 'react';
 
-function ControlBtn({ stateON, text }) {
+function ControlBtn({ stateON, setOn }) {
   return (
-    <div>
+    <div
+      onClick={() => {
+        setOn(!stateON);
+      }}
+    >
       {stateON ? (
         <button className='controlBtnON' onClick={console.log('HI')}>
-          {text}
+          ON
         </button>
       ) : (
         <button className='controlBtnOFF' onClick={console.log('HI')}>
-          {text}
+          OFF
         </button>
       )}
     </div>
