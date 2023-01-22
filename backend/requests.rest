@@ -80,3 +80,8 @@ GET http://localhost:3001/switch
 ###
 
 PUT http://localhost:3001/switch/update/63cc8ee97c1d6f7f8403b24a
+
+###
+//READINGS TEST
+
+GET http://localhost:3001/readings

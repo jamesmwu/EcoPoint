@@ -9,6 +9,13 @@ app.use(cors());
 
 mongoose.set('strictQuery', false);
 
+// var con1 = mongoose.createConnection(
+//   'mongodb+srv://jameswu21:12345@app.cmqxvm2.mongodb.net/?retryWrites=true&w=majority'
+// );
+// var con2 = mongoose.createConnection(
+//   'mongodb+srv://jameswu21:12345@app.cmqxvm2.mongodb.net/readings?retryWrites=true&w=majority'
+// );
+
 mongoose
   .connect(
     'mongodb+srv://jameswu21:12345@app.cmqxvm2.mongodb.net/?retryWrites=true&w=majority',
@@ -22,9 +29,14 @@ mongoose
 
 app.listen(3001, () => console.log('Server listening on port 3001'));
 
+// con1.model('User', require('./models/users'));
+// con1.model('Stat', require('./models/stats'));
+// con1.model('Switch', require('./models/switch'));
+
 const User = require('./models/users');
 const Stat = require('./models/stats');
 const Switch = require('./models/switch');
+const Reading = require('./models/readings');
 
 //USER ENDPOINTS
 app.get('/users', async (req, res) => {
@@ -123,4 +135,11 @@ app.put('/switch/update/:_id', async (req, res) => {
   light.save();
 
   res.json(light);
+});
+
+//EPS32 ENDPOINTS
+app.get('/readings', async (req, res) => {
+  const reading = await Reading.find();
+
+  res.json(reading);
 });
