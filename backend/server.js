@@ -33,6 +33,16 @@ app.get('/users', async (req, res) => {
   res.json(users);
 });
 
+app.get('/users/login', async (req, res) => {
+  const user = await User.findOne({ username: req.body.username });
+  if (!user) {
+    res.json({ error: 'Username does not exist.' });
+    return;
+  }
+
+  res.json(user);
+});
+
 app.post('/users/new', async (req, res) => {
   const dupUser = await User.findOne({ username: req.body.username });
   if (dupUser) {
