@@ -16,6 +16,11 @@ function Profile() {
     axios
       .get(URL + '/users/login')
       .then((res) => {
+        if (username === '' || password === '') {
+          setErr(true);
+          console.log('You must enter a value!');
+          return;
+        }
         console.log(res);
         navigate('/control');
       })
@@ -26,6 +31,12 @@ function Profile() {
   };
 
   const handleSignup = async (err) => {
+    if (username === '' || password === '') {
+      setErr(true);
+
+      console.log('You must enter a value!');
+      return;
+    }
     axios
       .post(URL + '/users/new', {
         username: username,
