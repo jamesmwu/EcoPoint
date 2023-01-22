@@ -3,18 +3,14 @@ import '../styles/control.css';
 import ControlBtn from '../components/ControlBtn';
 import ConnectBtn from '../components/ConnectBtn';
 
-function Control() {
-  const [isOn, setOn] = useState(false);
+export const useESP32 = () => {
+  const [isConnected, setIsConnected] = useState(false);
+  const [toggleCharacteristic, setToggleCharacteristic] =
+    (useState < BluetoothRemoteGATTCharacteristic) | (null > null);
+
   const connect = async () => {
-    //"Device" is a promise to a BluetoothDevice object
     const device = await navigator.bluetooth
       .requestDevice({
-        // filters: [
-        //   {
-        //     namePrefix: 'IFINGER',
-        //   },
-        // ],
-        // optionalServices: ["932c32bd-0000-47a2-835a-a8d455b859dd"],
         acceptAllDevices: true,
       })
       .then((device) => {
@@ -22,12 +18,60 @@ function Control() {
         console.log(`Name: ${device.name}`);
       })
       .catch((error) => console.error(`Something went wrong. ${error}`));
+    const server = await device.gatt?.connect();
+
+    //Returns promise to BluetoothRemoteGATTService
+    const service = await server.getPrimaryService(
+      '00001101-0000-1000-8000-00805f9b34fb'
+    );
+
+    //Returns promise to BluetoothRemoteGATTCharacteristic
+    // const toggleChar = await service.getCharacteristic(
+    //   '932c32bd-0002-47a2-835a-a8d455b859dd' // Philips Hue Light On/Off Toggle
+    // );
+
+    // setToggleCharacteristic(toggleChar);
+    setIsConnected(true);
+  };
+
+  const toggle = async () => {
+    const currentValue = await toggleCharacteristic?.readValue();
+    const lightIsCurrentlyOn = currentValue?.getUint8(0) ? true : false;
+
+    await toggleCharacteristic?.writeValue(
+      new Uint8Array([lightIsCurrentlyOn ? 0x0 : 0x1])
+    );
+  };
+
+  return { connect, toggle, isConnected };
+};
+
+function Control() {
+  const [isOn, setOn] = useState(false);
+
+  const connect = async () => {
+    const device = await navigator.bluetooth
+      .requestDevice({
+        acceptAllDevices: true,
+      })
+      .then((device) => {
+        //Do stuff with device
+        console.log(`Name: ${device.name}`);
+      })
+      .catch((error) => console.error(`Something went wrong. ${error}`));
+    const server = await device.gatt?.connect();
+
+    //Returns promise to BluetoothRemoteGATTService
+    const service = await server.getPrimaryService(
+      '00001101-0000-1000-8000-00805f9b34fb'
+    );
   };
 
   return (
     <div className='App'>
       <h1>Welcome, FINGERER.</h1>
       <ConnectBtn connect={connect} />
+      {/* <button onClick={toggle}>Toggle light</button> */}
 
       <div className='control'>
         <div className='container'>
