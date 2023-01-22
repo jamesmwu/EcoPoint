@@ -5,6 +5,7 @@ import '../styles/control.css';
 import ControlBtn from '../components/ControlBtn';
 import ConnectBtn from '../components/ConnectBtn';
 import LineGraph from 'react-line-graph';
+import Graph from '../components/Graph';
 import axios from 'axios';
 
 const URL = 'http://localhost:3001';
@@ -12,6 +13,9 @@ const URL = 'http://localhost:3001';
 function Control() {
   const [isOn, setOn] = useState(false);
   const [data, setData] = useState([]);
+  const [temp, setTemp] = useState([]);
+  const [humid, setHumid] = useState([]);
+  const [user, setUser] = useState('name');
 
   // const data = [
   //   22.00088501, 21.9701767, 21.98638916, 21.97284698, 21.96483612, 21.95625305,
@@ -32,20 +36,23 @@ function Control() {
     try {
       const response = await axios.get(URL + '/readings/');
       let arr = response.data;
-      let temp = [];
+      let tempT = [];
+      let humidT = [];
 
-      // console.log(arr[0].measurements.TEMPURATURES);
-
+      let j = 0;
       for (let i of arr) {
-        let xy = [];
-        xy.push(i.measurements.TEMPURATURES);
-        xy.push(i.measurements.HUMIDITY);
+        if (j === 150) break;
 
-        temp.push(xy);
+        tempT.push(i.measurements.TEMPERATURES);
+        humidT.push(i.measurements.HUMIDITY);
+
+        j++;
       }
-      console.log(temp);
+      console.log(tempT);
 
-      setData(temp);
+      setData(tempT);
+      setTemp(tempT);
+      setHumid(humidT);
     } catch (err) {
       console.error(err);
     }
@@ -89,20 +96,13 @@ function Control() {
 
   return (
     <div className='App'>
-      <h1>Welcome, FINGERER.</h1>
-      <LineGraph {...props} />
-
-      <ConnectBtn connect={connect} />
-
+      <h1>Your energy usage:</h1>
+      <Graph data={temp} /> <Graph data={humid} />
       <div className='control'>
         <div className='container'>
-          <ControlBtn stateON={isOn} setOn={setOn} />
-        </div>
+          <ConnectBtn connect={connect} />
 
-        <div className='container'>
-          <h2>Your energy usage:</h2>
-          <h3>*insert pie chart here*</h3>
-          {/* Look into react-minimal-pie-chart */}
+          <ControlBtn stateON={isOn} setOn={setOn} />
         </div>
       </div>
     </div>

@@ -1,0 +1,18 @@
+.leader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  background-color: var(--darkAccent);
+  padding: 2rem;
+  border-radius: 50px;
+  margin: 1rem 0;
+  width: 70%;
+}
+
+.board h1 {
+  font-size: 22px;
+}
