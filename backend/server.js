@@ -24,6 +24,7 @@ app.listen(3001, () => console.log('Server listening on port 3001'));
 
 const User = require('./models/users');
 const Stat = require('./models/stats');
+const Switch = require('./models/switch');
 
 //USER ENDPOINTS
 app.get('/users', async (req, res) => {
@@ -96,4 +97,20 @@ app.put('/leaderboard/update/:_id', async (req, res) => {
   stat.save();
 
   res.json(stat);
+});
+
+//SWITCH ENDPOINTS
+app.get('/switch', async (req, res) => {
+  const on = await Switch.find();
+
+  res.json(on);
+});
+
+app.put('/switch/update/:_id', async (req, res) => {
+  const light = await Switch.findById(req.params._id);
+
+  light.on = !light.on;
+  light.save();
+
+  res.json(light);
 });

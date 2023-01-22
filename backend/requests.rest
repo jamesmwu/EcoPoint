@@ -70,3 +70,13 @@ Content-Type: application/json
 ###
 
 PUT http://localhost:3001/feed/update/63a7a43aa98d7d3c45701b49
+
+###
+
+//SWITCH TEST
+GET http://localhost:3001/switch
+
+
+###
+
+PUT http://localhost:3001/switch/update/63cc8ee97c1d6f7f8403b24a
