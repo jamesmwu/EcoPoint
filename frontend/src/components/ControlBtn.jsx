@@ -8,11 +8,11 @@ function ControlBtn({ stateON, setOn }) {
       }}
     >
       {stateON ? (
-        <button className='controlBtnON' onClick={console.log('HI')}>
+        <button className='controlBtnON' onClick={console.log('Pressed')}>
           ON
         </button>
       ) : (
-        <button className='controlBtnOFF' onClick={console.log('HI')}>
+        <button className='controlBtnOFF' onClick={console.log('Pressed')}>
           OFF
         </button>
       )}
